@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 import java.util.Stack;
-
 
 public class Tree {
 	
@@ -42,9 +43,7 @@ public class Tree {
             }
         }
 	 }
-	public void createTree(Node root, Integer[] parent){
-		
-		//Node parentNode = new Node(root);
+	public void createTree(Node root, Integer[] parent){		
 		parentNodes.add(root);
 		for(int i=0;i<parent.length;i++){
 		if(parent[i] == root.data){
@@ -67,7 +66,19 @@ public class Tree {
 	}
 	
 	public static void main(String[] args){
-		Integer parent[]={1,5,5,2,2,-1,3};
+		
+		int n;
+		Integer[] parent;
+		
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter total no. of nodes");
+		n = in.nextInt();
+		parent = new Integer[n];
+		System.out.println("Enter parent array");
+		for (int i = 0; i < n; i++) {
+			parent[i] = in.nextInt();
+		}
+		
 		int rootData = Arrays.asList(parent).indexOf(-1);
 		Node root = new Node(rootData);
 		Tree tree = new Tree(root);
@@ -79,35 +90,5 @@ public class Tree {
 		System.out.println("\n"+"Bredth-First-Search : ");
 		tree.BFS(root);
 		
-		
-//		
-//		Node node1 = new Node(2);
-//		Node node2 = new Node(3);
-//		Node node3 = new Node(4);
-//		
-//		root.addChild(node1);
-//		root.addChild(node2);
-//		root.addChild(node3);
-//		
-//	
-//		Node node4 = new Node(5);
-//		Node node5 = new Node(6);
-//		node1.addChild(node4);
-//		node1.addChild(node5);
-//		
-//		Node node6 = new Node(7);
-//		node3.addChild(node6);
-//		
-//		Node node7 = new Node(8);
-//		node2.addChild(node7);
-//		
-//		Node node8 = new Node(9);
-//		Node node9 = new Node(10);
-//		node5.addChild(node8);
-//		node5.addChild(node9);
-//		
-//		Tree tree = new Tree();
-		
 	}
-
 }

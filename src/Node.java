@@ -6,7 +6,6 @@ public class Node {
 	int data;
 	ArrayList<Node> children;
 	private Node node;
-	public boolean visited = false;
 	
 	public Node(int data){
 		this.data = data;
