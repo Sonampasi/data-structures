@@ -13,11 +13,6 @@ public class Node {
 		children = new ArrayList<Node>();
 	}
 	
-	public Node(Node node){
-		this.node = node;
-		
-	}
-	
 	public int getData(){
 		return data;
 	}
@@ -29,5 +24,10 @@ public class Node {
 	public void addChild(Node child){
 		children.add(child);
 	}
+	
+	@Override
+    public String toString() {
+        return "child = " + data ;
+    }
 
 }
