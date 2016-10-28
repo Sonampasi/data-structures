@@ -8,6 +8,7 @@ public class Tree {
 	
 	Node root;
 	ArrayList<Node> parentNodes = new ArrayList<Node>();
+	static ArrayList<Tree> treeNodes;
 	
 	public Tree(Node root){
 		this.root = root;
@@ -41,19 +42,23 @@ public class Tree {
             }
         }
 	 }
-	public void createTree(Node root, Integer[] parent){		
-		parentNodes.add(root);
-		for(int i=0;i<parent.length;i++){
-		if(parent[i] == root.data){
-			Node childNode = new Node(i);
-			root.addChild(childNode);
-		}
-		}
-		if (root.getChildren() != null) {
-        	for (int i = 0; i < root.getChildren().size(); i++) {
-			Node child = root.getChildren().get(i);
-            createTree(child,parent);
-        	}
+	public void createTree(Integer[] parent){				
+		boolean visitedNodes[] = new boolean[parent.length];
+		for(int vertex=0; vertex<treeNodes.size(); vertex++){
+			Node treeNode = treeNodes.get(vertex).root;
+			parentNodes.add(treeNode);
+			for(int i=0; i<parent.length; i++){
+				if(visitedNodes[i]){
+					continue;
+				}
+				else if(parent[i] == treeNode.getData()){
+					visitedNodes[i] = true;
+					Node node = new Node(i);
+					treeNode.addChild(node);
+					Tree nextTreeNode = new Tree(node);
+					treeNodes.add(nextTreeNode);
+				}
+			}
 		}
 		
 	}
@@ -80,7 +85,9 @@ public class Tree {
 		int rootData = Arrays.asList(parent).indexOf(-1);
 		Node root = new Node(rootData);
 		Tree tree = new Tree(root);
-		tree.createTree(root,parent);
+		treeNodes = new ArrayList<Tree>();
+		treeNodes.add(tree);
+		tree.createTree(parent);
 		tree.print();
 		
 		System.out.println("Depth-First-Search : ");
