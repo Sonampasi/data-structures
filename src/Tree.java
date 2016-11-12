@@ -9,8 +9,8 @@ public class Tree {
 	Node root;
 	static ArrayList<Node> treeNodes;
 	int height=0;
-	Integer[] dfsNodesHeight;
-	Integer[] bfsNodesHeight;
+	static Integer[] dfsNodesHeight;
+	static Integer[] bfsNodesHeight;
 	
 	public Tree(Node root){
 		this.root = root;
@@ -55,9 +55,6 @@ public class Tree {
 	 }
 	
 	public void createTree(Integer[] parent){	
-		//initializing arrays
-		dfsNodesHeight = new Integer[parent.length];
-		bfsNodesHeight = new Integer[parent.length];
 		boolean visitedNodes[] = new boolean[parent.length];
 		for(int vertex=0; vertex<treeNodes.size(); vertex++){
 			Node treeNode = treeNodes.get(vertex);
@@ -125,9 +122,11 @@ public class Tree {
 		tree.createTree(parent);
 		tree.printTreeNodes();
 		
+		dfsNodesHeight = new Integer[parent.length];
 		System.out.println("Depth-First-Search : ");
 		tree.DFS(root);
 		
+		bfsNodesHeight = new Integer[parent.length];
 		System.out.println("\n"+"Bredth-First-Search : ");
 		tree.BFS(root);
 		
