@@ -3,17 +3,17 @@ import java.util.ArrayList;
 
 public class Node {
 	
-	int data;
+	int id;
 	ArrayList<Node> children;
 	private Node node;
 	
 	public Node(int data){
-		this.data = data;
+		this.id = data;
 		children = new ArrayList<Node>();
 	}
 	
-	public int getData(){
-		return data;
+	public int getId(){
+		return id;
 	}
 	
 	public ArrayList<Node> getChildren(){
@@ -26,7 +26,7 @@ public class Node {
 	
 	@Override
     public String toString() {
-        return "child = " + data ;
+        return "child = " + id ;
     }
 
 }
