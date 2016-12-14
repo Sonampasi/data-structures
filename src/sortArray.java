@@ -14,8 +14,8 @@ public class sortArray {
 			array[i] = s.nextInt();
 		}
 		//sort array in ascending order
-		for(int i = 0; i < array.length; i++ ){
-			for(int j = i+1; j < array.length; j++){
+		for(int i = 0; i < n-1; i++ ){
+			for(int j = i+1; j < n; j++){
 				if(array[i] > array[j]){
 					int temp = array[j];
 					array[j] = array[i];
