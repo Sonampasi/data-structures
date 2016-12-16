@@ -4,9 +4,9 @@ public class MergeSort {
 
 	public void sort(int[] array) {
 
+		//size of array
 		int n = array.length;
 
-		// if size of array is 2 then return
 		if (n < 2) {
 			return;
 		}
