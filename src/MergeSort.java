@@ -1,12 +1,35 @@
 import java.util.Scanner;
 
 public class MergeSort {
+	
+	static int n;
+	static int array[];
+	
+	/* read input */
+	public boolean read(){
+		Scanner s = new Scanner(System.in);
+		// enter the array size
+		n = s.nextInt();
+		// initialize the array
+		array = new int[n];
+		// enter elements in the array
+		for (int i = 0; i < n; i++) {
+			array[i] = s.nextInt();
+		}
+		//check if array is already sorted
+		for (int i = 1; i < n; i++) {
+			if(array[i-1] > array[i]){
+				return false;
+			}
+		}
+		return true;
+	}
 
 	public void sort(int[] array) {
-
+		
+		//size of array
 		int n = array.length;
 
-		// if size of array is 2 then return
 		if (n < 2) {
 			return;
 		}
@@ -46,7 +69,7 @@ public class MergeSort {
 		// Initial indexes of first and second sub arrays
 		int i = 0, j = 0;
 
-		// Initial index of merged subarry array
+		// Initial index of merged sub array
 		int k = 0;
 
 		while ((i < nLeft) && (j < nRight)) {
@@ -77,22 +100,20 @@ public class MergeSort {
 
 	public static void main(String[] args) {
 
-		Scanner s = new Scanner(System.in);
-		// enter the array size
-		int n = s.nextInt();
-		// initialize the array
-		int array[] = new int[n];
-		// enter elements in the array
-		for (int i = 0; i < n; i++) {
-			array[i] = s.nextInt();
-		}
-
 		MergeSort ms = new MergeSort();
-		ms.sort(array);
-
-		// print sorted array
-		for (int i = 0; i < n; i++) {
-			System.out.print(array[i] + " ");
+		
+		if(ms.read()){
+			System.out.print("Array is already sorted in ascending order.");
 		}
+		else{
+			System.out.print("Array has been sorted using merge sort.\n");
+			//call sort method
+			ms.sort(array);
+			//print sorted array
+			for (int i = 0; i < n; i++) {
+				System.out.print(array[i] + " ");
+			}
+		}
+
 	}
 }
