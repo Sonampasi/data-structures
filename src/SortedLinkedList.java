@@ -11,22 +11,21 @@ public class SortedLinkedList {
 	public void add(int data) {
 		// create new node
 		ListNode newNode = new ListNode(data);
-		//create first node
-		if(first == null){
-		newNode.next = first;
-		first = newNode;
-		}
-		else{
+		// create first node
+		if (first == null) {
+			newNode.next = first;
+			first = newNode;
+		} else {
 			ListNode head = first;
 			ListNode temp = null;
-			while(head != null && head.data < newNode.data){
+			while (head != null && head.data < newNode.data) {
 				temp = head;
 				head = head.next;
 			}
 			temp.next = newNode;
 			newNode.next = head;
 		}
-		
+
 	}
 
 	// print linked list
