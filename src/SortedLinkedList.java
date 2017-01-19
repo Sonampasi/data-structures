@@ -1,29 +1,24 @@
 public class SortedLinkedList {
-	// first node
-	ListNode first;
-
-	// LinkedList constructor
-	public SortedLinkedList() {
-		first = null;
-	}
+	
+	LinkedList ls = new LinkedList();
 
 	// insert new node in linked list at beginning
 	public void add(int data) {
 		// create new node
 		ListNode newNode = new ListNode(data);
 		// create first node
-		if (first == null) {
-			newNode.next = first;
-			first = newNode;
+		if (ls.head == null) {
+			newNode.next = ls.head;
+			ls.head = newNode;
 		} else {
-			ListNode head = first;
+			ListNode current = ls.head;
 			ListNode temp = null;
-			while (head != null && head.data < newNode.data) {
-				temp = head;
-				head = head.next;
+			while (current != null && current.data < newNode.data) {
+				temp = current;
+				current = current.next;
 			}
 			temp.next = newNode;
-			newNode.next = head;
+			newNode.next = current;
 		}
 
 	}
@@ -31,12 +26,7 @@ public class SortedLinkedList {
 	// print linked list
 	public void print() {
 		// initialize current node
-		ListNode current = first;
-		while (current != null) {
-			System.out.print(current.data + " ");
-			current = current.next;
-		}
-		System.out.print("\n");
+		ls.print();
 	}
 
 	public static void main(String args[]) {
