@@ -9,50 +9,56 @@ class ListNode {
 }
 
 public class LinkedList {
-	// first node
-	ListNode first;
+
+	ListNode head;
 
 	// LinkedList constructor
 	public LinkedList() {
-		first = null;
+		head = null;
 	}
 
 	// insert new node in linked list at beginning
-	public void add(int data) {
+	public void insertAtHead(int data) {
 		// create new node
-		ListNode head = new ListNode(data);
-		head.next = first;
-		first = head;
+		ListNode newNode = new ListNode(data);
+		newNode.next = head;
+		head = newNode;
 	}
 
 	// insert new node in linked list at specified position
-	public void addAtPositon(int data, int position) {
+	public void insertAtPositon(int data, int position)
+			throws UnsupportedOperationException {
 		int k = 1;
-		ListNode head = first;
+		ListNode current = head;
 		ListNode temp = null;
 		// create new node
 		ListNode newNode = new ListNode(data);
-
-		if (position == 1) {
-			temp = first;
-			first = newNode;
-			newNode.next = temp;
-		} else {
-			while (head != null && k < position) {
-				k++;
-				temp = head;
-				head = head.next;
+		try {
+			if (position == 1) {
+				insertAtHead(data);
+			} else {
+				while (current != null && k < position) {
+					k++;
+					temp = current;
+					current = current.next;
+				}
+				if (position < 1 || position != k) {
+					throw new UnsupportedOperationException(
+							"Invalid operation !!\n");
+				}
+				temp.next = newNode;
+				newNode.next = current;
 			}
-			temp.next = newNode;
-			newNode.next = head;
+		} catch (UnsupportedOperationException e) {
+			System.out.print(e);
 		}
 	}
 
 	// insert new node in linked list at last
-	public void addAtEnd(int data) {
+	public void insertAtTail(int data) {
 		// create new node
 		ListNode newNode = new ListNode(data);
-		ListNode current = first;
+		ListNode current = head;
 		ListNode previous = null;
 		while (current != null) {
 			previous = current;
@@ -62,27 +68,35 @@ public class LinkedList {
 	}
 
 	// delete first node in linked list
-	public void deleteFirst() {
-		ListNode temp = first;
-		first = temp.next;
-		System.out.println("\nDeleted first node ");
+	public void deleteAtHead() {
+		try {
+			ListNode temp = head;
+			head = temp.next;
+			System.out.println("\nDeleted first node ");
+		} catch (Exception e) {
+			System.out.print(e + ":Invalid operation !!\n");
+		}
 	}
 
 	// delete last node in linked list
-	public void deleteLast() {
-		ListNode previous = first;
-		ListNode tail = first.next;
-		while (tail.next != null) {
-			previous = previous.next;
-			tail = tail.next;
+	public void deleteAtTail() {
+		try {
+			ListNode previous = head;
+			ListNode tail = head.next;
+			while (tail.next != null) {
+				previous = previous.next;
+				tail = tail.next;
+			}
+			previous.next = null;
+			System.out.println("\nDeleted last node ");
+		} catch (Exception e) {
+			System.out.print(e + ":Invalid operation !!\n");
 		}
-		previous.next = null;
-		System.out.println("\nDeleted last node ");
 	}
 
 	// search for a node exist in linked list or not
 	public boolean find(int data) {
-		ListNode current = first;
+		ListNode current = head;
 		while (current != null) {
 			if (current.data == data) {
 				System.out.print("\nMatch Found for " + data);
@@ -97,7 +111,7 @@ public class LinkedList {
 	// print linked list
 	public void print() {
 		// initialize current node
-		ListNode current = first;
+		ListNode current = head;
 		while (current != null) {
 			System.out.print(current.data + " ");
 			current = current.next;
@@ -108,26 +122,26 @@ public class LinkedList {
 	public static void main(String args[]) {
 
 		LinkedList list = new LinkedList();
-		list.add(12);
-		list.add(13);
-		list.add(14);
-		list.add(10);
-		list.add(11);
+		list.insertAtHead(12);
+		list.insertAtHead(13);
+		list.insertAtHead(14);
+		list.insertAtHead(10);
+		list.insertAtHead(11);
 		list.print();
-		list.addAtPositon(18, 3);
+		list.insertAtPositon(18, 2);
 		list.print();
-		list.addAtPositon(9, 1);
+		list.insertAtPositon(9, 11);// throws UnsupportedOperationException
 		list.print();
-		list.addAtPositon(15, 2);
+		list.insertAtPositon(15, -1);// throws UnsupportedOperationException
 		list.print();
-		list.addAtEnd(21);
+		list.insertAtTail(21);
 		list.print();
 		list.find(13);
-		list.deleteFirst();
+		list.deleteAtHead();
 		list.print();
-		list.deleteLast();
+		list.deleteAtTail();
 		list.print();
-		list.deleteLast();
+		list.deleteAtTail();
 		list.print();
 		list.find(13);
 	}
