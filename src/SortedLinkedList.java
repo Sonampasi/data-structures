@@ -1,25 +1,20 @@
 public class SortedLinkedList {
-	
+
 	LinkedList ls = new LinkedList();
 
-	// insert new node in linked list at beginning
+	// insert new node in ascending order into the linked list
 	public void add(int data) {
 		// create new node
 		ListNode newNode = new ListNode(data);
-		// create first node
-		if (ls.head == null) {
-			newNode.next = ls.head;
-			ls.head = newNode;
-		} else {
-			ListNode current = ls.head;
-			ListNode temp = null;
-			while (current != null && current.data < newNode.data) {
-				temp = current;
-				current = current.next;
-			}
-			temp.next = newNode;
-			newNode.next = current;
+		int position = 1;
+		ListNode current = ls.head;
+		// ListNode temp = null;
+		while (current != null && current.data < newNode.data) {
+			// temp = current;
+			position++;
+			current = current.next;
 		}
+		ls.insertAtPositon(data, position);
 
 	}
 
