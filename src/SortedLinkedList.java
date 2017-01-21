@@ -4,18 +4,15 @@ public class SortedLinkedList {
 
 	// insert new node in ascending order into the linked list
 	public void add(int data) {
-		// create new node
-		ListNode newNode = new ListNode(data);
+
 		int position = 1;
 		ListNode current = ls.head;
-		// ListNode temp = null;
-		while (current != null && current.data < newNode.data) {
-			// temp = current;
+
+		while (current != null && current.data < data) {
 			position++;
 			current = current.next;
 		}
 		ls.insertAtPositon(data, position);
-
 	}
 
 	// print linked list
