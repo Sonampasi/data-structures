@@ -7,30 +7,31 @@ public class QueueUsingLinkedList {
 		rear = null;
 	}
 
+	// check if queue is empty
 	public boolean isEmpty() {
 		return (front == null);
 	}
 
+	// insert new item at the end of the queue
 	public void enQueue(int data) {
 		ListNode newNode = new ListNode(data);
-		if(rear != null){
+		if (rear != null) {
 			rear.next = newNode;
 		}
 		rear = newNode;
 		if (isEmpty()) {
 			front = rear;
-		} 
+		}
 	}
 
+	// remove item from the front of the queue
 	public void deQueue() {
-		//ListNode temp = null;
 		if (isEmpty()) {
 			System.out.println("Queue underflow!!");
 		} else if (front == rear) {
 			System.out.println("Queue is Empty!!");
 			front = rear = null;
 		} else {
-			//temp = front;
 			front = front.next;
 		}
 	}
