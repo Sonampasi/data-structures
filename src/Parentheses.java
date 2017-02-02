@@ -2,12 +2,12 @@ import java.util.Stack;
 
 public class Parentheses {
 	Stack<Character> stack = new Stack();
-	int right = 0;
-	int left = 0;
 
 	public boolean isValid(String s) {
 		int i = 0;
 		char c;
+		int right = 0;
+		int left = 0;
 		while (i < s.length()) {
 			c = s.charAt(i);
 			// consider only for parentheses characters
@@ -28,7 +28,8 @@ public class Parentheses {
 			}
 			i++;
 		}
-		// if stack is empty, all the parenthesis are in matched pair return true
+		// if stack is empty, all the parenthesis are in matched pair return
+		// true
 		return (stack.empty() && (right == left));
 	}
 
