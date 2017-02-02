@@ -9,9 +9,9 @@ public class Parentheses {
 		while (i < s.length()) {
 			c = s.charAt(i);
 			//consider only for parentheses characters
-			if (c == '(' || c == ')') {
+			if (c == '(' || c == ')' || c == '{' || c == '}' || c == '[' || c == ']') {
 				//if stack is not empty and character is right parenthesis, pop the top element
-				if ((!stack.empty()) && c == ')') {
+				if ((!stack.empty()) && ( c == ')' || c == '}' || c == ']')) {
 					stack.pop();
 				} 
 				//only push left parenthesis into the stack
@@ -27,7 +27,7 @@ public class Parentheses {
 
 	public static void main(String args[]) {
 		Parentheses p = new Parentheses();
-		String s = "(xyz(abcdo)lkj)(asdf)()(456)";
+		String s = "(xyz(abcdo)lkj){asdf}[(456)]";
 		System.out.print(p.isValid(s));
 	}
 }
