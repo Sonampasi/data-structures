@@ -4,49 +4,30 @@ public class Parentheses {
 	Stack<Character> stack = new Stack();
 
 	public boolean isValid(String s) {
-		//if only one character exist, return false
-		if (s.length() == 1) {
-			return false;
-		} else {
-			int i = 0;
-			boolean isMatched = false;
-			//Iterate over string s using i 
-			while (i < s.length()) {
-				//push current string's character into the stack
-				stack.push(s.charAt(i));
-				//if there is only one character in the stack
-				if (stack.size() == 1) {
-					i++;
-					if(i == s.length()){
-						return false;
-					}
-					stack.push(s.charAt(i));
-				}
-				//pop two characters
-				char popA = (char) stack.pop();
-				char popB = (char) stack.pop();
-				//compare popped characters
-				if ((popB == '[' && popA == ']') || (popB == '{' && popA == '}') || (popB == '(' && popA == ')')) {
-					isMatched = true;
-					i++;
-				} else {
-					//push back the popped characters
-					stack.push(popB);
-					stack.push(popA);
-					i++;
+		int i = 0;
+		char c;
+		while (i < s.length()) {
+			c = s.charAt(i);
+			//consider only for parentheses characters
+			if (c == '(' || c == ')') {
+				//if stack is not empty and character is right parenthesis, pop the top element
+				if ((!stack.empty()) && c == ')') {
+					stack.pop();
+				} 
+				//only push left parenthesis into the stack
+				else {
+					stack.push(c);
 				}
 			}
-			//if stack is empty and isMatched is true
-			if (stack.empty()) {
-				return isMatched;
-			}
+			i++;
 		}
-		return false;
-}
+		//if stack is empty, all the parenthesis are in matched pair, hence returns true
+		return (stack.empty());
+	}
 
-public static void main(String args[]) {
-	Parentheses p = new Parentheses();
-	String s = "[])";
+	public static void main(String args[]) {
+		Parentheses p = new Parentheses();
+		String s = "(xyz(abcdo)lkj)(asdf)()(456)";
 		System.out.print(p.isValid(s));
 	}
 }
