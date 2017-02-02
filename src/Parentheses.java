@@ -15,7 +15,7 @@ public class Parentheses {
 				// if stack is not empty and character is right parenthesis, pop
 				// the top element
 				if (c == ')' || c == '}' || c == ']') {
-					if ((!stack.empty())) {
+					if (!stack.empty()) {
 						stack.pop();
 					}
 					right++;
@@ -28,8 +28,7 @@ public class Parentheses {
 			}
 			i++;
 		}
-		// if stack is empty, all the parenthesis are in matched pair, hence
-		// returns true
+		// if stack is empty, all the parenthesis are in matched pair return true
 		return (stack.empty() && (right == left));
 	}
 
