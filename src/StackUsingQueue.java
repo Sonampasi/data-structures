@@ -20,15 +20,13 @@ public class StackUsingQueue {
 	/** Removes the element on top of the stack and returns that element. */
 	public int pop() {
 		if (queue.isEmpty()) {
+			System.out.println("Stack Underflow!!");
 			return -1;
 		}
-		Integer poppedItem = null;
 		Integer temp = null;
 		int i = 0;
-		try {
-			while (!queue.isEmpty()) {
-				poppedItem = queue.remove();
-				temp = poppedItem;
+		while (!queue.isEmpty()) {
+				temp = queue.remove();
 				if (i >= queue.size()) {
 					return temp;
 				}
@@ -36,16 +34,13 @@ public class StackUsingQueue {
 				rear = temp;
 				i++;
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return poppedItem;
+		return temp;
 	}
 
 	/** Get the top element. */
 	public int top() {
 		if (queue.isEmpty()) {
+			System.out.println("Stack Underflow!!");
 			return -1;
 		} else {
 			return rear;
@@ -61,7 +56,7 @@ public class StackUsingQueue {
 		StackUsingQueue obj = new StackUsingQueue();
 		obj.push(23);
 		obj.push(11);
-		obj.push(61);
+		obj.push(6);
 		obj.push(61);
 		System.out.println("Pop: " + obj.pop());
 		System.out.println("Pop: " + obj.pop());
