@@ -26,14 +26,14 @@ public class StackUsingQueue {
 		Integer temp = null;
 		int i = 0;
 		while (!queue.isEmpty()) {
-				temp = queue.remove();
-				if (i >= queue.size()) {
-					return temp;
-				}
-				queue.add(temp);
-				rear = temp;
-				i++;
+			temp = queue.remove();
+			if (i >= queue.size()) {
+				return temp;
 			}
+			queue.add(temp);
+			rear = temp;
+			i++;
+		}
 		return temp;
 	}
 
