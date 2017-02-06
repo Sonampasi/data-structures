@@ -26,8 +26,6 @@ public class QueueUsingStack {
 		Integer temp = null;
 		if (empty()) {
 			return -1;
-		} else if (stack.size() == 1) {
-			return stack.pop();
 		} else {
 			while (!empty()) {
 				temp = stack.pop();
@@ -60,10 +58,8 @@ public class QueueUsingStack {
 	public static void main(String args[]) {
 		QueueUsingStack obj = new QueueUsingStack();
 		obj.push(1);
-		obj.push(2);
-		obj.push(3);
-		obj.push(4);
 		System.out.println(obj.pop());
+		obj.push(2);
 		System.out.println(obj.peek());
 		System.out.println(obj.empty());
 	}
