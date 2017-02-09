@@ -87,7 +87,6 @@ public class BinaryTreeTraversal {
 				//push right child into the stack
 				postorderStack.push(currentNode.right);
 			} else {
-				//if current node has no child print node value
 				System.out.print(currentNode.val + " ");
 				//pop current node
 				postorderStack.pop();
@@ -106,12 +105,12 @@ public class BinaryTreeTraversal {
 		 root.right.left = new TreeNode(6);
 		 root.right.right = new TreeNode(7);
 
-		// BinaryTreeTraversal obj1 = new BinaryTreeTraversal(root);
-		// obj1.preorder();
-		// System.out.println();
-		// BinaryTreeTraversal obj2 = new BinaryTreeTraversal(root);
-		// obj2.inorder();
-		// System.out.println();
+		BinaryTreeTraversal obj1 = new BinaryTreeTraversal(root);
+		obj1.preorder();
+		System.out.println();
+		BinaryTreeTraversal obj2 = new BinaryTreeTraversal(root);
+		obj2.inorder();
+		System.out.println();
 		BinaryTreeTraversal obj3 = new BinaryTreeTraversal(root);
 		obj3.postorder();
 	}
