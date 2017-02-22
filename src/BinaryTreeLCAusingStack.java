@@ -1,5 +1,5 @@
 /* Time complexity : O(n)
- * Space complexity : O(2h) 
+ * Space complexity : O(h) 
  * h is height of the tree
  */
 import java.util.Stack;
