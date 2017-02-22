@@ -1,6 +1,6 @@
 /* Time complexity : O(n)
  * Space complexity : O(h) 
- * h is the height of binary tree
+ * h is the height of a binary tree
  */
 import java.util.Stack;
 
