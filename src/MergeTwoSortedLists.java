@@ -1,25 +1,47 @@
 
 public class MergeTwoSortedLists {
 	
-	public void mergeTwoLists(ListNode l1, ListNode l2) {
-		ListNode head=null;
+public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        
+        ListNode head=null;
+        ListNode first = head;
+        if(l1 == null && l2 == null ){
+            return first;
+        }
+        else if(l1 == null && l2 != null){
+            first = l2;
+            return first;
+        }
+        else if(l2 == null && l1 != null){
+		    first = l1;
+		    return first;
+		}
+		else if(l1.data<l2.data ){
+		    head = new ListNode(l1.data);
+		    first = head;
+		    l1 = l1.next;
+		}else{
+		    head = new ListNode(l2.data);
+		    first = head;
+		    l2 = l2.next;
+		}
 		while((l1!=null) || (l2!=null)){
 		    if(l1 != null && l2 != null && l1.data<l2.data){
-		    	head = l1;
+		    	head.next = l1;
 		    	l1 = l1.next;
 		    }else if(l2 != null){
-		    	head = l2;
+		    	head.next = l2;
 		    	l2 = l2.next;
 		    }else{
-		    	head = l1;
+		    	head.next = l1;
 		    	l1 = l1.next;
 		    }
 		  
-			System.out.print(head.data+" ");
 			head = head.next;
 	    }
-	   }
-	
+	    
+	    return first;
+    }
 	// print linked list
 		public void print(ListNode head) {
 			// initialize current node
@@ -52,7 +74,7 @@ public class MergeTwoSortedLists {
 		b1.next = b2;
 		b2.next = b3;
 		MergeTwoSortedLists obj = new MergeTwoSortedLists();
-		obj.mergeTwoLists(headA, headB);
+		obj.print(obj.mergeTwoLists(headA, headB));
 	
 		
 	}
